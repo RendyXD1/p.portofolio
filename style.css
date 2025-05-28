@@ -1,0 +1,793 @@
+/* ==========================================================================
+   Import Google Fonts
+   ========================================================================== */
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+   /* ==========================================================================
+      Global Styling & Variables
+      ========================================================================== */
+   :root {
+       /* Color Palette (Blue Theme) */
+       --primary-blue: #007bff;
+       --secondary-blue: #6c757d;
+       --light-blue: #e9f7fe;
+       --dark-blue: #003a70;
+       --accent-blue: #17a2b8; /* Teal-blue accent */
+   
+       /* Neutral Colors */
+       --text-color: #343a40;
+       --muted-text: #6c757d;
+       --white: #ffffff;
+       --light-grey: #f8f9fa;
+       --border-color: #dee2e6;
+   
+       /* Shadow Effects */
+       --shadow-light: rgba(0, 0, 0, 0.05);
+       --shadow-medium: rgba(0, 0, 0, 0.1);
+       --shadow-strong: rgba(0, 0, 0, 0.2);
+   
+       /* Gradients */
+       --gradient-hero: linear-gradient(to right, #e0efff, #1984ef);
+       --gradient-cta: linear-gradient(to right, #316bea, #007bff);
+       --gradient-footer: linear-gradient(to right, #003a70, #007bff);
+   }
+   
+   body {
+       font-family: 'Open Sans', sans-serif;
+       background-color: var(--light-grey);
+       color: var(--text-color);
+       line-height: 1.6; /* Improved readability */
+   }
+   
+   h1, h2, h3, h4, h5, h6 {
+       font-family: 'Poppins', sans-serif;
+       color: var(--dark-blue); /* Apply dark blue to all headings */
+       margin-bottom: 0.75rem; /* Consistent spacing below headings */
+   }
+   
+   /* Re-assigning Bootstrap colors for consistency with variables */
+   .text-primary-blue { color: var(--primary-blue) !important; }
+   .text-secondary-blue { color: var(--secondary-blue) !important; }
+   .text-accent-blue { color: var(--accent-blue) !important; }
+   .text-dark-blue { color: var(--dark-blue) !important; }
+   .bg-light-blue { background-color: var(--light-blue) !important; }
+   
+   /* ==========================================================================
+      Navbar Styling
+      ========================================================================== */
+   .bg-white-blur {
+       background-color: rgba(255, 255, 255, 0.95);
+       backdrop-filter: blur(8px);
+       -webkit-backdrop-filter: blur(8px); /* Safari support */
+       box-shadow: 0 2px 10px var(--shadow-light);
+       z-index: 1030; /* Ensure it stays on top */
+   }
+   
+   .navbar-brand {
+       color: var(--dark-blue) !important;
+       font-weight: 700;
+       font-size: 1.6rem;
+       display: flex;
+       align-items: center;
+   }
+   
+   .navbar-brand img {
+       margin-right: 8px;
+   }
+   
+   .nav-link {
+       color: var(--dark-blue) !important; /* Changed to dark-blue for better contrast */
+       margin-right: 20px;
+       position: relative;
+       padding: 0.5rem 0; /* Consistent vertical padding */
+       transition: color 0.3s ease-in-out ;
+   }
+   
+   .nav-link::after {
+       content: '';
+       position: absolute;
+       bottom: -2px; /* Adjusted to be closer to text */
+       left: 0;
+       width: 0;
+       height: 2px;
+       background-color: var(--primary-blue);
+       transition: width 0.3s ease-in-out;
+   }
+   
+   .nav-link:hover,
+   .nav-link.active {
+       color: var(--primary-blue) !important;
+       transform: translateY(-2px);
+   }
+   
+   .nav-link:hover::after,
+   .nav-link.active::after {
+       width: 100%;
+   }
+   
+   .btn-primary-blue {
+       background-color: var(--primary-blue);
+       border: none;
+       color: var(--white);
+       padding: 0.75rem 1.5rem;
+       border-radius: 0.375rem;
+       transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease;
+       text-decoration: none; /* Ensure it's a link */
+       display: inline-block; /* For proper padding and margin */
+   }
+   
+   .btn-primary-blue:hover {
+       background-color: var(--dark-blue);
+       color: var(--white);
+       transform: translateY(-3px);
+       box-shadow: 0 5px 15px var(--shadow-medium);
+   }
+   
+   /* ==========================================================================
+      Hero Section
+      ========================================================================== */
+   .hero {
+       background: var(--gradient-hero);
+       padding-top: 6rem;
+       padding-bottom: 8rem;
+       display: flex; /* Use flexbox for alignment */
+       align-items: center;
+       min-height: 70vh; /* Ensure it takes up sufficient vertical space */
+   }
+   
+   .hero h1 {
+       color: var(--dark-blue); /* Adjusted to dark-blue for consistency */
+       font-size: 3.5rem;
+       line-height: 1.2;
+   }
+   
+   .hero h1 span {
+       color: var(--primary-blue);
+   }
+   
+   .hero p {
+       color: var(--muted-text);
+       font-size: 1.1rem;
+       line-height: 1.7;
+       max-width: 600px; /* Constrain width for readability */
+   }
+   
+   .hero-img {
+       height: 250px;
+       width: 250px; /* Changed to square for perfect circle */
+       border-radius: 50%;
+       object-fit: cover;
+       box-shadow: 0 10px 30px var(--shadow-medium); /* Stronger shadow for depth */
+       border: 5px solid var(--white); /* White border around image */
+   }
+   
+   /* ==========================================================================
+      About Me Section
+      ========================================================================== */
+   .about-me {
+       background-color: var(--light-grey);
+       padding: 5rem 0; /* Consistent padding */
+       /* font-size: xx-large; - REMOVED: This should be handled by Bootstrap classes or P tags for better control */
+        text-align: justify;
+    }
+   
+   .about-me h2 {
+       font-size: 2.5rem; /* Consistent heading size */
+       margin-bottom: 1.5rem;
+   }
+   
+   .about-me h2 span {
+       color: var(--primary-blue);
+   }
+   
+   .about-me p.lead {
+       font-size: 1.1rem; /* Bootstrap lead class default */
+       margin-bottom: 1rem;
+   }
+   
+   .about-me strong {
+       color: var(--dark-blue); /* Stronger color for emphasis */
+   }
+   
+   .about-me .img-fluid {
+       border-radius: 8px; /* Consistent border-radius */
+       box-shadow: 0 8px 20px var(--shadow-medium);
+       width: 100%;
+       display: block; /* Center image using margin auto */
+       margin: 0 auto;
+   }
+   
+   .about-me .badge.bg-primary-blue {
+       background-color: var(--primary-blue) !important;
+       font-size: 1rem; /* Slightly larger font size */
+       padding: 0.6em 1em; /* Adjusted padding */
+       border-radius: 20px; /* More rounded */
+   }
+   
+   /* ==========================================================================
+      Skills Section
+      ========================================================================== */
+   .skills {
+       padding: 5rem 0; /* Consistent padding */
+       background-color: var(--light-blue);
+   }
+   
+   .skills h2.text-center {
+       font-size: 2.5rem;
+       margin-bottom: 3rem;
+       color: var(--dark-blue);
+   }
+   
+   .skill-box {
+       background-color: var(--white);
+       border: 1px solid var(--border-color);
+       border-radius: 12px; /* Slightly more rounded corners */
+       transition: all 0.3s ease-in-out;
+       cursor: default;
+       overflow: hidden;
+       position: relative;
+       min-height: 180px; /* Increased min-height for better content fit */
+       display: flex;
+       flex-direction: column;
+       justify-content: center; /* Center content vertically */
+       padding: 1.5rem; /* Consistent padding */
+   }
+   
+   .skill-box:hover {
+       transform: translateY(-10px); /* Increased lift on hover */
+       box-shadow: 0 15px 35px var(--shadow-medium); /* Stronger shadow on hover */
+       border-color: var(--primary-blue);
+   }
+   
+   .skill-box h5 {
+       color: var(--dark-blue); /* Consistent heading color */
+       margin-bottom: 0.5rem; /* Consistent spacing */
+       font-size: 1.3rem; /* Slightly larger for emphasis */
+   }
+   
+   .skill-box .skill-description {
+       position: relative;
+       flex-grow: 1; /* Allows it to take available space */
+   }
+   
+   .skill-box p.short-desc {
+       opacity: 1;
+       transition: opacity 0.3s ease-in-out;
+       margin-bottom: 0;
+       color: var(--muted-text);
+   }
+   
+   .skill-box p.full-desc {
+       opacity: 0;
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       padding: 0 1.5rem; /* Consistent padding */
+       box-sizing: border-box; /* Include padding in width/height calculation */
+       color: var(--muted-text);
+       transition: opacity 0.3s ease-in-out;
+       display: flex;
+       align-items: center;
+       text-align: left; /* Ensure text alignment is left */
+   }
+   
+   .skill-box:hover p.short-desc {
+       opacity: 0;
+   }
+   
+   .skill-box:hover p.full-desc {
+       opacity: 1;
+       position: static; /* Allows full-desc to take up space on hover */
+   }
+   
+   /* My Skills Overview */
+   .my-skills-overview {
+       background-color: var(--white);
+       border: 1px solid var(--light-blue);
+       border-radius: 12px; /* Consistent border-radius */
+       box-shadow: 0 8px 20px var(--shadow-light);
+       padding: 2.5rem; /* Consistent padding */
+   }
+   
+   .my-skills-overview h5 {
+       color: var(--dark-blue);
+       margin-bottom: 1.5rem;
+       font-size: 1.3rem;
+   }
+   
+   .my-skills-overview ul {
+       padding-left: 0;
+       list-style: none;
+   }
+   
+   .my-skills-overview ul li {
+       padding: 10px 0; /* Consistent padding */
+       border-bottom: 1px dashed var(--border-color); /* Stronger dashed line */
+       display: flex;
+       align-items: flex-start; /* Align icon to top of text */
+       color: var(--muted-text);
+       font-size: 1rem;
+   }
+   
+   .my-skills-overview ul li:last-child {
+       border-bottom: none;
+   }
+   
+   .my-skills-overview ul li i {
+       font-size: 1.2em; /* Slightly larger icon */
+       margin-right: 12px; /* Increased margin */
+       width: 25px; /* Fixed width for consistent alignment */
+       text-align: center;
+       flex-shrink: 0; /* Prevent icon from shrinking */
+   }
+   
+   /* Progress Circles */
+   .circle-wrap {
+       position: relative;
+       width: 140px; /* Increased size */
+       height: 140px; /* Increased size */
+       margin: auto;
+       margin-bottom: 1rem; /* Added margin below circle */
+   }
+   
+   .circle {
+       width: 100%;
+       height: 100%;
+       background: var(--primary-blue); /* Light blue for the base */
+       border-radius: 50%;
+       position: relative;
+       overflow: hidden;
+       box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Soft inner shadow */
+   }
+   
+   .mask {
+       width: 100%;
+       height: 100%;
+       position: absolute;
+       border-radius: 50%;
+       clip: rect(0px, 140px, 140px, 70px); /* Adjusted clip to new size */
+   }
+   
+   .mask .fill {
+       clip: rect(0px, 70px, 140px, 0px); /* Adjusted clip to new size */
+       background-color:var(--light-blue) ; /* Primary blue for progress fill */
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       border-radius: 50%;
+       animation: fillAnim 2s ease-in-out forwards;
+   }
+   
+   .inside-circle {
+       width: 85%; /* Adjusted size */
+       height: 85%; /* Adjusted size */
+       border-radius: 50%;
+       background: var(--white);
+       line-height: calc(140px * 0.85); /* Dynamic line-height based on new size */
+       text-align: center;
+       position: absolute;
+       top: 7.5%; /* Adjusted position */
+       left: 7.5%; /* Adjusted position */
+       font-weight: 700;
+       font-size: 22px; /* Slightly larger font */
+       color: var(--dark-blue); /* Dark blue for text */
+       box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Soft shadow for inner circle */
+   }
+   
+   @keyframes fillAnim {
+       from { transform: rotate(0deg); }
+       to { transform: rotate(var(--angle)); }
+   }
+   
+   /* Set rotation angle for each skill (percentages * 3.6 degrees) */
+   .circle.html { --angle: calc(70 * 3.6deg); }
+   .circle.css { --angle: calc(70 * 3.6deg); }
+   .circle.figma { --angle: calc(65 * 3.6deg); }
+   .circle.bootstrap { --angle: calc(50 * 3.6deg); }
+   .circle.tailwind { --angle: calc(55 * 3.6deg); }
+   
+   /* ==========================================================================
+      Business Solution Section
+      ========================================================================== */
+   .business {
+       background-color: var(--white);
+       padding: 5rem 0; /* Consistent padding */
+   }
+   
+   .business h2 {
+       font-size: 2.5rem;
+       margin-bottom: 1.5rem;
+       line-height: 1.2;
+   }
+   
+   .business h2 span {
+       color: var(--primary-blue);
+   }
+   
+   .business p {
+       font-size: 1.1rem;
+       color: var(--muted-text);
+       max-width: 600px;
+   }
+   
+   .business-img {
+       border-radius: 50%; /* Changed to square border-radius for consistency with other elements */
+       width: 100%; /* Make it responsive */
+       max-width: 400px; /* Max width constraint */
+       height: auto; /* Maintain aspect ratio */
+       object-fit: cover;
+       box-shadow: 0 10px 30px var(--shadow-medium); /* Consistent shadow */
+       display: block; /* Allows centering */
+       margin: 0 auto; /* Center the image */
+   }
+   
+   /* ==========================================================================
+      Recent Projects Section
+      ========================================================================== */
+   .recent-projects {
+       background-color: var(--light-grey);
+       padding: 5rem 0; /* Consistent padding */
+   }
+   
+   .recent-projects h2 {
+       font-size: 2.5rem;
+       margin-bottom: 3rem;
+       color: var(--dark-blue);
+   }
+   
+   .project-link {
+       text-decoration: none;
+       color: inherit;
+       display: block;
+       height: 100%; /* Ensure link covers entire card */
+   }
+   
+   .project-card {
+       position: relative;
+       overflow: hidden;
+       border-radius: 12px; /* Consistent border-radius */
+       box-shadow: 0 6px 20px var(--shadow-light);
+       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+       background-color: var(--white);
+       height: 100%;
+       display: flex; /* Use flex for internal layout */
+       flex-direction: column; /* Stack image and caption */
+   }
+   
+   .project-card img {
+       width: 100%;
+       height: 220px; /* Fixed height for consistent look */
+       object-fit: cover;
+       border-top-left-radius: 12px; /* Match card border-radius */
+       border-top-right-radius: 12px;
+       transition: transform 0.3s ease-in-out;
+   }
+   
+   .project-overlay {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: calc(100% - 40px); /* Adjust height to cover only the image area */
+       background: rgba(0, 123, 255, 0.8); /* Primary blue overlay */
+       color: var(--white);
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       opacity: 0;
+       transition: opacity 0.3s ease-in-out;
+       border-top-left-radius: 12px;
+       border-top-right-radius: 12px;
+   }
+   
+   .project-overlay h4 {
+       margin: 0;
+       color: var(--white);
+       font-size: 1.5rem;
+       text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Subtle text shadow */
+   }
+   
+   .project-caption {
+       padding: 1rem;
+       font-size: 1rem;
+       color: var(--muted-text);
+       text-align: center;
+       background-color: var(--white);
+       border-bottom-left-radius: 12px;
+       border-bottom-right-radius: 12px;
+       margin-top: auto; /* Push caption to bottom */
+   }
+   
+   .project-link:hover .project-card {
+       transform: translateY(-12px); /* Slightly higher lift */
+       box-shadow: 0 12px 30px var(--shadow-strong); /* Stronger shadow */
+   }
+   
+   .project-link:hover .project-card img {
+       transform: scale(1.08); /* More noticeable zoom */
+   }
+   
+   .project-link:hover .project-overlay {
+       opacity: 1;
+   }
+   
+   /* ==========================================================================
+      Contact Section
+      ========================================================================== */
+   #contact {
+       padding-top: 5rem;
+       padding-bottom: 5rem;
+       background-color: var(--white);
+   }
+   
+   #contact h2 {
+       color: var(--dark-blue);
+       font-size: 2.5rem;
+       margin-bottom: 3rem;
+   }
+   
+   #contact form {
+       background-color: var(--white);
+       border: 1px solid var(--border-color);
+       border-radius: 12px; /* Consistent border-radius */
+       box-shadow: 0 10px 30px var(--shadow-light);
+       padding: 2.5rem; /* Consistent padding */
+   }
+   
+   #contact input,
+   #contact textarea {
+       border: 1px solid var(--border-color);
+       border-radius: 8px; /* Consistent border-radius */
+       padding: 0.75rem 1rem;
+       transition: all 0.2s ease-in-out;
+   }
+   
+   #contact input:focus,
+   #contact textarea:focus {
+       border-color: var(--primary-blue);
+       box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Focus ring */
+   }
+   
+   #contact button {
+       background-color: var(--primary-blue);
+       color: var(--white);
+       border-radius: 8px; /* Consistent border-radius */
+       padding: 0.75rem 1.5rem;
+       font-weight: 600;
+       transition: all 0.3s ease-in-out;
+   }
+   
+   #contact button:hover {
+       background-color: var(--dark-blue);
+       transform: translateY(-3px);
+       box-shadow: 0 5px 15px var(--shadow-medium);
+   }
+   
+   /* ==========================================================================
+      Call to Action Section
+      ========================================================================== */
+   .cta {
+       background: var(--gradient-cta);
+       color: var(--white); /* Ensure text color is white */
+       padding: 4rem 0;
+       text-align: center;
+       box-shadow: 0 -5px 20px var(--shadow-medium); /* Shadow to separate from content above */
+   }
+   
+   .cta h2 {
+       font-size: 2.8rem;
+       margin-bottom: 1rem;
+       color: var(--white); /* Ensure heading color is white */
+   }
+   
+   .cta p {
+       font-size: 1.2rem;
+       color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for secondary text */
+       margin-bottom: 2rem;
+   }
+   
+   .social-icons a {
+       color: var(--white);
+       text-decoration: none;
+       font-size: 2rem; /* Larger icons */
+       margin: 0 15px; /* More spacing between icons */
+       transition: color 0.3s ease-in-out, transform 0.2s ease-out;
+       display: inline-block; /* For transform to work properly */
+   }
+   
+   .social-icons a:hover {
+       color: var(--light-blue); /* Lighter blue on hover */
+       transform: translateY(-5px) scale(1.1); /* More pronounced hover effect */
+   }
+   
+   /* ==========================================================================
+      Footer
+      ========================================================================== */
+   footer {
+       background: var(--gradient-footer) !important;
+       color: var(--white);
+       padding: 1.5rem 0;
+       font-size: 0.9rem;
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for footer */
+   }
+   
+   footer .container {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       flex-wrap: wrap; /* Allow wrapping on small screens */
+   }
+   
+   footer .text-muted {
+       color: rgba(255, 255, 255, 0.7) !important; /* Slightly transparent white for muted text */
+       margin-bottom: 0; /* Remove default margin for p tag */
+   }
+
+   .tombol-send {
+    padding: 12px 30px;
+    background-color: #00adb5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .tombol-send::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.4s;
+  }
+  
+  .tombol-send:hover::after {
+    left: 0;
+  }
+  
+  .tombol-send:hover {
+    transform: scale(1.05);
+    background-color: #133088;
+  }
+
+  .contact form {
+  margin-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+.contact input, .contact textarea {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 10px;
+}
+.contact button {
+  padding: 0.8em;
+  border: none;
+  background: #0d134e;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+   
+   /* ==========================================================================
+      Responsive Adjustments
+      ========================================================================== */
+   @media (max-width: 991.98px) { /* Medium devices (desktops) */
+       .hero .container {
+           flex-direction: column;
+           text-align: center;
+       }
+   
+       .hero div[data-aos="fade-left"] {
+           margin-top: 3rem; /* Spacing for content below hero text */
+       }
+   
+       .hero-img {
+           height: 250px;
+           width: 250px;
+       }
+   
+       .business .row {
+           flex-direction: column-reverse; /* Stack image below text on medium screens */
+       }
+   
+       .business .col-lg-6:first-child {
+           margin-top: 2rem; /* Add space above reversed image */
+       }
+   }
+   
+   @media (max-width: 767.98px) { /* Small devices (tablets) */
+       .navbar-toggler {
+           border-color: rgba(0,0,0,.1); /* Ensure border is visible */
+       }
+   
+       .navbar-collapse {
+           margin-top: 1rem;
+           border-top: 1px solid var(--border-color); /* Separator line */
+           padding-top: 1rem;
+       }
+   
+       .nav-link {
+           margin-right: 0; /* Remove horizontal margin */
+           text-align: center;
+           padding: 0.75rem 0; /* More vertical padding for tap target */
+       }
+   
+       .nav-link::after {
+           left: 50%;
+           transform: translateX(-50%); /* Center underline */
+       }
+   
+       .about-me .col-lg-6.text-center {
+           margin-top: 2rem; /* Space above image on small screens */
+       }
+   
+       .my-skills-overview {
+           margin-top: 2rem; /* Space above skills overview on small screens */
+       }
+   
+       .project-card img {
+           height: 180px; /* Smaller image height for projects */
+       }
+   
+       .hero h1 {
+           font-size: 2.8rem; /* Smaller hero heading */
+       }
+   
+       .hero p {
+           font-size: 1rem; /* Smaller hero paragraph */
+       }
+   
+       .cta h2 {
+           font-size: 2.2rem; /* Smaller CTA heading */
+       }
+   
+       .cta p {
+           font-size: 1rem; /* Smaller CTA paragraph */
+       }
+   }
+   
+   @media (max-width: 575.98px) { /* Extra small devices (phones) */
+       .recent-projects .col-sm-6 {
+           flex: 0 0 100%; /* Projects stack vertically */
+           max-width: 100%;
+       }
+   
+       .hero-img {
+           width: 200px; /* Even smaller hero image */
+           height: 200px;
+       }
+   
+       .business-img {
+           width: 100%; /* Fluid width */
+           height: auto; /* Maintain aspect ratio */
+       }
+   
+       .circle-wrap {
+           width: 100px; /* Smaller skill circles */
+           height: 100px;
+       }
+   
+       .inside-circle {
+           line-height: calc(100px * 0.85); /* Adjust line-height */
+           font-size: 18px; /* Smaller font in circles */
+       }
+   
+       .mask {
+           clip: rect(0px, 100px, 100px, 50px); /* Adjust clip for smaller circles */
+       }
+   
+       .mask .fill {
+           clip: rect(0px, 50px, 100px, 0px); /* Adjust clip for smaller circles */
+       }
+   }
